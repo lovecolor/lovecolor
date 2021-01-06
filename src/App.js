@@ -6,10 +6,25 @@ import styled from "styled-components";
 
 const base = new Airtable({ apiKey: "keyd4WWrMKp1ZmbwC" }).base("appNB4LHqQ4XK6OCM");
 
+const Styledp = styled.p`
+background-color: #9162BB;
+width: 1200px;
+    height: 30px;
+    margin-bottom: 1%;
+    padding-top: 0.9%;
+    padding-left: 1%;
+    color:#100E4F;
+`;
 const StyledH1 = styled.h1`
   text-align: center;
   font-size: 4rem;
   margin: 1rem 0;
+`;
+const StyledH2 = styled.h2`
+color:#100E4F;
+`;
+const StyledH3 = styled.h3`
+color:#100E4F;
 `;
 const StyledGoal = styled.div`
   padding: 1rem;
@@ -68,10 +83,7 @@ const StyledCheckBox = styled.label`
     }
   }
 `;
-const StyledGoalDetails = styled.div`
-  padding: 2rem;
-  background: #dacfff;
-`;
+
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
@@ -98,15 +110,15 @@ const Goal = ({ goal, updates }) => {
         <input type="checkbox" defaultChecked={goal.fields.complete} disabled />
         <span />
       </StyledCheckBox>
-      <h2>{goal.fields.title}</h2>
-      <StyledGoalDetails>
-        <h3>DETAILS</h3>
-        <p>{goal.fields.details}</p>
-        <h3>UPDATES</h3>
+      <StyledH2>{goal.fields.title}</StyledH2>
+      <div>
+        <StyledH3>DETAILS</StyledH3>
+        <Styledp>{goal.fields.details}</Styledp>
+        <StyledH3>UPDATES</StyledH3>
         {updates.map((update, index) => (
-          <p key={index}>{update.fields.update}</p>
+          <Styledp key={index}>{update.fields.update}</Styledp>
         ))}
-      </StyledGoalDetails>
+      </div>
     </StyledGoal>
   );
 };
